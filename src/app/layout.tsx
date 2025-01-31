@@ -49,7 +49,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} bg-gradient-to-r from-[#e1dbfc] to-[#daf2f9] dark:bg-gradient-to-r from-[#0d091f] to-[#381d53] w-full overflow-hidden flex flex-col h-dvh`}
+        className={`${inter.className} bg-white dark:bg-gradient-to-r from-[#0d091f] to-[#381d53] w-full overflow-hidden flex flex-col h-dvh`}
       >
         <ThemeProviders>
           {children}
