@@ -1,0 +1,53 @@
+import React from 'react'
+import DevMenuBar from './dev-menu-bar'
+
+const DevMenuBarUsage = () => {
+  const menuItems = [
+    {
+      name: "Home",
+      path: "/",
+    },
+    {
+      name: "Solutions",
+      path: "/solutions",
+      subLinks: [
+        {
+          name: "Foods and Beverages",
+          path: "/solutions/food-and-beverages",
+          subPaths: [
+            {
+              name: "Online Restaurant",
+              path: "/food-and-beverages/online-restaurant",
+            },
+            {
+              name: "WhatsApp Marketing",
+              path: "/food-and-beverages/whatsapp-marketing",
+            },
+          ],
+        },
+        {
+          name: "Retail Industry",
+          path: "/solutions/retail",
+        },
+      ],
+    },
+    {
+      name: "Contact",
+      path: "/contact",
+    },
+  ];
+  return (
+    <DevMenuBar
+    menuItems={menuItems}
+    logo={{
+      src: "/assets/logo.png",
+      alt: "Company Logo",
+      width: 100,
+      height: 100,
+    }}
+    className="bg-[url('/assets/hero-bg.png')]"
+  />
+  )
+}
+
+export default DevMenuBarUsage

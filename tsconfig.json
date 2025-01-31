@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "public/dev-components/modals/(dev-modal-v1)/dev-modal-v1.jsx", "public/dev-components/multiselect/(dev-multiselect-v1)/multiselect.jsx", "public/dev-components/dropdowns/(dev-dropdown-v1)/dev-dropdown-v1.jsx", "public/dev-components/accordions/(dev-accordion-v2)/dev-accordion-v2.jsx", "public/dev-components/emoji-pickers/(dev-emoji-picker-v1)/dev-emoji-picker-v1.jsx", "public/dev-components/rich-text-editor/(dev-rich-text-editor-v1)/dev-rich-text-editor-v1.jsx", "public/dev-components/carousels/(dev-carousel-v1)/dev-carousel-v1.jsx"],
+"exclude": ["node_modules"]
+}

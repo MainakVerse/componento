@@ -1,0 +1,114 @@
+import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { RiArrowDropDownLine } from 'react-icons/ri';
+
+// TypeScript interfaces for better type safety
+interface SubPath {
+  name: string;
+  path: string;
+}
+
+interface SubLink {
+  name: string;
+  path: string;
+  subPaths?: SubPath[];
+}
+
+interface NavLink {
+  name: string;
+  path: string;
+  subLinks?: SubLink[];
+}
+
+interface DynamicMenuProps {
+  menuItems: NavLink[];
+  logo?: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+    className?: string;
+  };
+  className?: string;
+}
+
+const DevMenuBar = ({ menuItems, logo, className = '' }: DynamicMenuProps) => {
+  return (
+    <header className={`p-2 md:px-8 flex items-center justify-between ${className}`}>
+      {logo && (
+        <Link href="/">
+          <Image
+            src={logo.src}
+            alt={logo.alt}
+            width={logo.width}
+            height={logo.height}
+            className={logo.className || 'w-20 md:w-28'}
+          />
+        </Link>
+      )}
+      <nav className="md:block hidden">
+        <ul className="flex items-center justify-between gap-10">
+          {menuItems.map((item, index) =>
+            item.subLinks ? (
+              <li
+                key={index}
+                className="group hover:text-blue-500 transition-all flex items-center justify-center gap-1 flex-col relative"
+              >
+                <Link
+                  href={item.path}
+                  className="cursor-pointer w-full flex items-center justify-center gap-1"
+                >
+                  {item.name} <RiArrowDropDownLine className="text-2xl" />
+                </Link>
+                <ul className="bg-white divide-y scale-y-0 z-40 border shadow-md font-normal text-sm flex group-hover:h-fit transition-all origin-top justify-center group-hover:opacity-100 group-hover:scale-y-100 flex-col *:p-2 *:px-4 rounded-md absolute top-6 opacity-0">
+                  {item.subLinks.map((subItem, i) =>
+                    subItem.subPaths ? (
+                      <li
+                        key={i}
+                        className="group/subpath hover:text-blue-500 hover:bg-slate-100 transition-all flex items-center justify-center gap-1 flex-col relative"
+                      >
+                        <Link
+                          href={subItem.path}
+                          className="cursor-pointer peer w-full text-nowrap flex items-center justify-center gap-1"
+                        >
+                          {subItem.name}
+                          <RiArrowDropDownLine className="text-3xl" />
+                        </Link>
+                        <div className="bg-white divide-y -translate-x-7 -right-full scale-y-0 z-40 border shadow-md font-normal text-sm flex group-hover/subpath:h-fit transition-all origin-top justify-center group-hover/subpath:opacity-100 group-hover/subpath:scale-y-100 flex-col *:p-2 *:px-4 rounded-md absolute top-10 opacity-0">
+                          {subItem.subPaths.map((subPath, j) => (
+                            <Link
+                              key={j}
+                              href={`/${item.name.toLowerCase()}${subPath.path}`}
+                              className="hover:opacity-80 hover:bg-slate-100 text-black whitespace-nowrap"
+                            >
+                              {subPath.name}
+                            </Link>
+                          ))}
+                        </div>
+                      </li>
+                    ) : (
+                      <Link
+                        key={i}
+                        href={subItem.path}
+                        className="hover:opacity-80 hover:bg-slate-100 text-black whitespace-nowrap"
+                      >
+                        {subItem.name}
+                      </Link>
+                    )
+                  )}
+                </ul>
+              </li>
+            ) : (
+              <li className="hover:text-blue-500" key={index}>
+                <Link href={item.path}>{item.name}</Link>
+              </li>
+            )
+          )}
+        </ul>
+      </nav>
+    </header>
+  );
+};
+
+export default DevMenuBar;

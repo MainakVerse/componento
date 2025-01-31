@@ -1,0 +1,319 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ACCENT: 6, 182, 212;
+  --LIGHT: 245, 255, 255;
+  --DARK: 31, 41, 55;
+  
+}
+
+
+
+/* theme button css  */
+
+.themeButton {
+  cursor:pointer;   
+  border:none;
+  user-select: none;
+  -webkit-user-select: none;
+  outline: none;
+  position: relative;
+  z-index: 0;
+}
+
+.themeButton:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 200%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  width: calc(100% );
+  height: calc(100% );
+  animation: glowingthemeButton-85 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius:6px;
+}
+
+.themeButton:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+
+pre {
+  text-wrap: wrap !important;
+}
+/* Chrome, Edge and Safari */
+*::-webkit-scrollbar {
+  height: 10px;
+  width: 8px;
+}
+*::-webkit-scrollbar-track {
+  @apply !bg-transparent;
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  
+  background-color: rgba(15, 40, 161, 0.3);
+  cursor: pointer;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(0, 0, 0);
+  cursor: pointer;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: rgba(42, 16, 82, 0.5);
+  cursor: pointer;
+}
+
+/* dev-Modal css animation */
+.Modal-Overlay {
+  animation: modal-overlayShow 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.Modal-Content {
+  animation: modal-contentShow 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modal-overlayShow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes modal-contentShow {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Dropdown animation  */
+.showDropDown {
+  animation: dropDownShow 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes dropDownShow {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Popover animation  */
+.showPopover {
+  animation: popoverShow 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes popoverShow {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* SelectOptions animation  */
+.showOptions {
+  animation: optionShow 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes optionShow {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Tooltip animation  */
+.TooltipContent {
+  animation: showTooltip 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes showTooltip {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Qr code Css  */
+.dev-qr path:nth-child(2) {
+  @apply !fill-ACCENT;
+}
+/* Calendar CSS  */
+.react-calendar {
+  @apply w-64 max-w-xs *:select-none overflow-hidden !text-sm rounded-lg border border-ACCENT/20 bg-LIGHT dark:bg-DARK;
+}
+
+.react-calendar__navigation {
+  @apply p-3 bg-ACCENT flex items-center justify-between !text-white font-semibold gap-1;
+}
+
+.react-calendar__navigation button {
+  @apply text-base;
+}
+.react-calendar__navigation__arrow {
+  @apply !text-xl w-5 aspect-square;
+}
+.react-calendar__month-view__days {
+  @apply !grid grid-cols-7 gap-0.5 p-1;
+}
+.react-calendar__year-view__months,
+.react-calendar__decade-view__years,
+.react-calendar__century-view__decades {
+  @apply !grid grid-cols-3 gap-1 text-nowrap p-1;
+}
+.react-calendar__century-view__decades {
+  @apply text-xs;
+}
+.react-calendar__month-view__weekdays {
+  @apply grid grid-cols-7 text-center text-xs font-semibold bg-ACCENT !text-white p-2;
+}
+.react-calendar abbr[title] {
+  @apply !no-underline;
+}
+
+.react-calendar__year-view .react-calendar__tile,
+.react-calendar__decade-view .react-calendar__tile,
+.react-calendar__century-view .react-calendar__tile {
+  @apply rounded-md p-2 hover:bg-ACCENT hover:!text-white aspect-auto;
+}
+
+.react-calendar__tile {
+  @apply rounded-full aspect-square hover:bg-ACCENT/30;
+}
+
+.react-calendar__tile--now {
+  @apply text-ACCENT hover:!text-white !border border-ACCENT hover:!bg-ACCENT;
+}
+
+.react-calendar__tile--hasActive,
+.react-calendar__tile:enabled:focus,
+.react-calendar__tile--active {
+  @apply bg-ACCENT text-white;
+}
+
+.react-calendar__month-view__days__day--neighboringMonth {
+  @apply opacity-40;
+}
+
+/* color picker css  */
+.react-colorful {
+  gap: 5px;
+  width: 100% !important;
+  height: 180px !important;
+  border-radius: 0px;
+}
+.react-colorful__saturation {
+  border-radius: 5px !important;
+  width: 100%;
+}
+.react-colorful__hue,
+.react-colorful__alpha {
+  border-radius: 5px !important;
+  width: 100%;
+
+  height: 12px !important;
+}
+.react-colorful__hue-pointer,
+.react-colorful__alpha-pointer,
+.react-colorful__saturation-pointer {
+  width: 15px !important;
+  height: 15px !important;
+}
+
+/* colorpicker 2 css */
+.w-color-sketch {
+  @apply !rounded-lg *:!border-slate-500/50 !pb-1.5 !bg-LIGHT dark:!bg-DARK;
+}
+
+.w-color-sketch div:not(.w-color-swatch),
+.w-color-sketch input {
+  @apply !rounded-md  font-medium dark:!text-white !text-black;
+}
+
+/* accordion css  */
+.accordContent {
+  &[data-state="open"] {
+    animation: slideDown 300ms cubic-bezier(0.87, 0, 0.13, 1);
+  }
+  &[data-state="closed"] {
+    animation: slideUp 300ms cubic-bezier(0.87, 0, 0.13, 1);
+  }
+}
+@keyframes slideDown {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+.colorSwatch .w-color-sketch {
+  @apply !rounded-lg *:!border-slate-500/50 !pb-1.5 !bg-rtlLight dark:!bg-rtlDark; 
+}
+
+.colorSwatch .w-color-sketch div:not(.w-color-swatch),
+.colorSwatch .w-color-sketch input {
+  @apply !rounded-md  font-medium dark:!text-white !text-black;
+}
