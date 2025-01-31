@@ -1,5 +1,7 @@
 # Componento
 
+![image](https://github.com/user-attachments/assets/79cc9d76-5c08-49b4-8446-4b1d152508bc)
+
 
 ## The Idea
 
